@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ClockContext))]
-    [Migration("20211214215732_CreateUserAndClockTables")]
+    [Migration("20211219183917_CreateUserAndClockTables")]
     partial class CreateUserAndClockTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Domain.Entities.Clock", b =>
+            modelBuilder.Entity("Domain.DataObjects.DatabaseObjects.ClockDbo", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,10 +41,10 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("Clocks");
+                    b.ToTable("Clock");
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.DataObjects.DatabaseObjects.UserDbo", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,12 +72,12 @@ namespace Infrastructure.Migrations
                     b.HasIndex("Login")
                         .IsUnique();
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Clock", b =>
+            modelBuilder.Entity("Domain.DataObjects.DatabaseObjects.ClockDbo", b =>
                 {
-                    b.HasOne("Domain.Entities.User", "User")
+                    b.HasOne("Domain.DataObjects.DatabaseObjects.UserDbo", "User")
                         .WithMany("Clocks")
                         .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -86,7 +86,7 @@ namespace Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.DataObjects.DatabaseObjects.UserDbo", b =>
                 {
                     b.Navigation("Clocks");
                 });

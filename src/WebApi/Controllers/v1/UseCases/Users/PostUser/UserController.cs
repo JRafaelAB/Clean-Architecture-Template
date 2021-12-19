@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Application.UseCases.Users.PostUser;
-using Domain.DTOs;
-using Domain.Models.Requests;
+using Domain.DataObjects.Entities.Factories;
+using Domain.DataObjects.Models.Requests;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Controllers.Base;
@@ -17,10 +17,12 @@ namespace WebApi.Controllers.v1.UseCases.Users.PostUser
     public class UserController : BaseController
     {
         private readonly IPostUserUseCase _useCase;
+        private readonly IUserEntityFactory _userEntityFactory;
 
-        public UserController(IPostUserUseCase useCase)
+        public UserController(IPostUserUseCase useCase, IUserEntityFactory userEntityFactory)
         {
             _useCase = useCase;
+            _userEntityFactory = userEntityFactory;
         }
         
         /// <summary>
@@ -34,7 +36,7 @@ namespace WebApi.Controllers.v1.UseCases.Users.PostUser
         public async Task<IActionResult> PostUser([FromBody] PostUserRequest request)
         {
             ValidateRequest(request);
-            await _useCase.Execute(new UserDto(request));
+            await _useCase.Execute(_userEntityFactory.CreateNew(request));
             return NoContent();
         }
     }

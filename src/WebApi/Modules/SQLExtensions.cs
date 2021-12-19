@@ -1,6 +1,6 @@
 ﻿using Domain.Constants;
-using Domain.Repositories;
-using Domain.UnitOfWork;
+using Domain.DataAccess.Repositories;
+using Domain.DataAccess.UnitOfWork;
 using Infrastructure.DataAccess;
 using Infrastructure.DataAccess.Contexts;
 using Infrastructure.Repositories;

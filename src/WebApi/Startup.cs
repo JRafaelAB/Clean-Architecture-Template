@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using WebApi.Modules;
+using WebApi.Modules.Mapper;
 using WebApi.Modules.Swagger;
 
 namespace WebApi
@@ -16,6 +17,7 @@ namespace WebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Domain.Utils.Configuration.SetConfiguration(Configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -26,10 +28,12 @@ namespace WebApi
                 .AddSwagger()
                 .AddVersioning()
                 .AddLogger(this.Configuration)
+                .AddCustomAutoMapper()
                 .AddSQLServer(this.Configuration)
+                .AddEntityFactories()
                 .AddUseCases()
                 .AddControllers();
-            
+
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;

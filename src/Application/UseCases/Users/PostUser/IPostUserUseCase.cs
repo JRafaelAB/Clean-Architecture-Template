@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Domain.DTOs;
+using Domain.DataObjects.Entities.User;
 
 namespace Application.UseCases.Users.PostUser
 {
 
     public interface IPostUserUseCase
     {
-        Task Execute(UserDto user);
+        Task Execute(UserEntity user);
     }
 }

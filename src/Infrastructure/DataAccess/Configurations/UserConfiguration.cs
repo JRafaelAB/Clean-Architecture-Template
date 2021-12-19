@@ -1,17 +1,18 @@
-﻿using Domain.Entities;
+﻿using Domain.Constants;
+using Domain.DataObjects.DatabaseObjects;
 using Domain.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.DataAccess.Configurations
 {
-    public sealed class UserConfiguration : IEntityTypeConfiguration<User>
+    public sealed class UserConfiguration : IEntityTypeConfiguration<UserDbo>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<UserDbo> builder)
         {
             builder.ValidateNullArgument(nameof(builder));
 
-            builder.ToTable("Users");
+            builder.ToTable(TableNames.UserTable);
             
             builder.HasKey(user => user.Id);
             builder.HasIndex(user => user.Login).IsUnique();

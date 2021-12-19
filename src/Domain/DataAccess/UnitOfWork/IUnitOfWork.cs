@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Domain.UnitOfWork
+namespace Domain.DataAccess.UnitOfWork
 {
     public interface IUnitOfWork
     {

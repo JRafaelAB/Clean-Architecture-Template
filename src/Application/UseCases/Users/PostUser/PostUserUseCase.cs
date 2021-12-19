@@ -1,37 +1,21 @@
 ﻿using System.Threading.Tasks;
-using Domain.Constants;
-using Domain.DTOs;
-using Domain.Repositories;
-using Domain.UnitOfWork;
-using Domain.Utils;
-using Microsoft.Extensions.Configuration;
+using Domain.DataAccess.UnitOfWork;
+using Domain.DataObjects.Entities.User;
 
 namespace Application.UseCases.Users.PostUser
 {
     public class PostUserUseCase : IPostUserUseCase
     {
-        private readonly IConfiguration _configuration;
-        private readonly IUserRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public PostUserUseCase(IConfiguration configuration, IUserRepository repository, IUnitOfWork unitOfWork)
+        public PostUserUseCase(IUnitOfWork unitOfWork)
         {
-            this._configuration = configuration;
-            this._repository = repository;
             this._unitOfWork = unitOfWork;
         }
 
-        public async Task Execute(UserDto user)
+        public async Task Execute(UserEntity user)
         {
-            await this._repository.ValidateExistingUser(user.Login);
-                
-            var saltSize = this._configuration.GetValue<uint>(AppSettingsVariables.UserSaltSize);
-            var salt = Cryptography.GenerateSalt(saltSize);
-            var password = Cryptography.EncryptPassword(user.Password, salt);
-
-            user.SetCryptographyCredentials(password, salt);
-
-            await this._repository.AddUser(user);
+            await user.AddToDatabase();
             await this._unitOfWork.Save();
         }
     }

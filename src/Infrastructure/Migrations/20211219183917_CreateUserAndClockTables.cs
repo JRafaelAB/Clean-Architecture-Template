@@ -8,7 +8,7 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Users",
+                name: "User",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -20,11 +20,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clocks",
+                name: "Clock",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -35,23 +35,23 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clocks", x => x.Id);
+                    table.PrimaryKey("PK_Clock", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Clocks_Users_IdUser",
+                        name: "FK_Clock_User_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "Users",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Clocks_IdUser",
-                table: "Clocks",
+                name: "IX_Clock_IdUser",
+                table: "Clock",
                 column: "IdUser");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Login",
-                table: "Users",
+                name: "IX_User_Login",
+                table: "User",
                 column: "Login",
                 unique: true);
         }
@@ -59,10 +59,10 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Clocks");
+                name: "Clock");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "User");
         }
     }
 }

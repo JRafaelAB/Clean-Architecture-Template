@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Domain.UnitOfWork;
+using Domain.DataAccess.UnitOfWork;
 using Infrastructure.DataAccess;
 using Infrastructure.DataAccess.Contexts;
 using Moq;

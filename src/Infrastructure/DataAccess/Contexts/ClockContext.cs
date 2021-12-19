@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using System.Data;
+using Domain.DataObjects.DatabaseObjects;
 using Domain.Utils;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,10 +7,11 @@ namespace Infrastructure.DataAccess.Contexts
 {
     public class ClockContext : DbContext
     {
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserDbo> Users { get; set; }
         
-        public virtual DbSet<Clock> Clocks { get; set; }
-        
+        public virtual DbSet<ClockDbo> Clocks { get; set; }
+        public IDbConnection Connection => Database.GetDbConnection();
+
         public ClockContext()
         {
             

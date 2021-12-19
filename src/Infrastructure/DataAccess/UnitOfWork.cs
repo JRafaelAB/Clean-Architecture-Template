@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Domain.UnitOfWork;
+using Domain.DataAccess.UnitOfWork;
 using Infrastructure.DataAccess.Contexts;
 
 namespace Infrastructure.DataAccess
