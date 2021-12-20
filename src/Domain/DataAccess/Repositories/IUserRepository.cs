@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 
 namespace Domain.DataAccess.Repositories
 {

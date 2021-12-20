@@ -1,5 +1,5 @@
 ﻿using Domain.Constants;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 using Domain.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

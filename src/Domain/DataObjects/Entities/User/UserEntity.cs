@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Domain.Constants;
 using Domain.DataAccess.Repositories;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 using Domain.Utils;
 
 namespace Domain.DataObjects.Entities.User
 {
-    public class UserEntity : BaseEntity<UserDbo>
+    public class UserEntity : DatabaseMappedEntity<UserDbo>
     {
         public string Name { get; }
         public string Login { get; }

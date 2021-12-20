@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 using Domain.DataObjects.Entities.User;
 
 namespace Domain.DataObjects

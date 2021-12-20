@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Constants;
 using Domain.Enums;
 
-namespace Domain.DataObjects.DatabaseObjects
+namespace Domain.DataObjects.Database
 {
     [Table(TableNames.ClockTable)]
     public class ClockDbo

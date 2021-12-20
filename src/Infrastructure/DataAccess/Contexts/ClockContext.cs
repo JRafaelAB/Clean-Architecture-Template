@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 using Domain.Utils;
 using Microsoft.EntityFrameworkCore;
 

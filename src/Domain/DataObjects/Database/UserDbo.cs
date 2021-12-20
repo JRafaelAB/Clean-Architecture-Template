@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Constants;
+
 #pragma warning disable CS8618
 
-namespace Domain.DataObjects.DatabaseObjects
+namespace Domain.DataObjects.Database
 {
     [Table(TableNames.UserTable)]
     public class UserDbo

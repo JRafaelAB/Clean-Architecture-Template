@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Domain.DataAccess.Repositories;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 using Domain.Exceptions;
 using Domain.Resources;
 using Dommel;

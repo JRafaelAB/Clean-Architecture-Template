@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.DataAccess.Repositories;
-using Domain.DataObjects.DatabaseObjects;
+using Domain.DataObjects.Database;
 using Domain.DataObjects.Entities.Factories;
 using Domain.DataObjects.Models.Requests;
 
