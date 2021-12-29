@@ -10,12 +10,12 @@ namespace UnitTests.DataAccess
 {
     public class UnitOfWorkTest
     {
-        private readonly Mock<ClockContext> _clockContext;
+        private readonly Mock<CleanTemplateContext> _clockContext;
         private readonly IUnitOfWork _unitOfWork;
         
         public UnitOfWorkTest()
         {
-            this._clockContext = new Mock<ClockContext>();
+            this._clockContext = new Mock<CleanTemplateContext>();
             this._unitOfWork = new UnitOfWork(this._clockContext.Object);
         }
         

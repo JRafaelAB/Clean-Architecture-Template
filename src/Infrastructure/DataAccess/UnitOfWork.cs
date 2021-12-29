@@ -7,16 +7,16 @@ namespace Infrastructure.DataAccess
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly ClockContext _clockContext;
+        private readonly CleanTemplateContext _cleanTemplateContext;
         private bool _disposed;
 
-        public UnitOfWork(ClockContext clockContext) => this._clockContext = clockContext;
+        public UnitOfWork(CleanTemplateContext cleanTemplateContext) => this._cleanTemplateContext = cleanTemplateContext;
 
         public void Dispose() => this.Dispose(true);
 
         public async Task<int> Save()
         {
-            int affectedRows = await this._clockContext
+            int affectedRows = await this._cleanTemplateContext
                 .SaveChangesAsync();
             return affectedRows;
         }
@@ -25,7 +25,7 @@ namespace Infrastructure.DataAccess
         {
             if (!this._disposed && disposing)
             {
-                this._clockContext.Dispose();
+                this._cleanTemplateContext.Dispose();
             }
 
             this._disposed = true;

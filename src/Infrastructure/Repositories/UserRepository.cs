@@ -11,9 +11,9 @@ namespace Infrastructure.Repositories
 {
     public class UserRepository: IUserRepository
     {
-        private readonly ClockContext _context;
+        private readonly CleanTemplateContext _context;
 
-        public UserRepository(ClockContext context)
+        public UserRepository(CleanTemplateContext context)
         {
             _context = context;
         }

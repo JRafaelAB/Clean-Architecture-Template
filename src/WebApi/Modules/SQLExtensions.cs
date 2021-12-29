@@ -16,7 +16,7 @@ namespace WebApi.Modules
         {
             string connectionString = configuration.GetValue<string>(AppSettingsVariables.SqlClockConnectionString) ?? string.Empty;
 
-            services.AddDbContext<ClockContext>(
+            services.AddDbContext<CleanTemplateContext>(
                 options =>
                 {
                     options.UseSqlServer(connectionString, option => option.MigrationsAssembly("Infrastructure"));

@@ -5,19 +5,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DataAccess.Contexts
 {
-    public class ClockContext : DbContext
+    public class CleanTemplateContext : DbContext
     {
         public virtual DbSet<UserDbo> Users { get; set; }
-        
-        public virtual DbSet<ClockDbo> Clocks { get; set; }
         public IDbConnection Connection => Database.GetDbConnection();
 
-        public ClockContext()
+        public CleanTemplateContext()
         {
             
         }
 
-        public ClockContext(DbContextOptions<ClockContext> options) : base(options)
+        public CleanTemplateContext(DbContextOptions<CleanTemplateContext> options) : base(options)
         {
             
         }
@@ -26,7 +24,7 @@ namespace Infrastructure.DataAccess.Contexts
         {
             modelBuilder.ValidateNullArgument(nameof(modelBuilder));
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClockContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CleanTemplateContext).Assembly);
         }
     }
 }
