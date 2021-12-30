@@ -28,4 +28,9 @@
       <ProjectReference Include="..\Domain\Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Migrations\20211230002809_IniciaBancoAdicionaTabelaUsuarios.cs" />
+      <Compile Remove="Migrations\20211230002809_IniciaBancoAdicionaTabelaUsuarios.Designer.cs" />
+    </ItemGroup>
+
 </Project>
