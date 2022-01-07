@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using Domain.Constants;
 
 namespace Domain.Utils
 {
     public static class Cryptography
     {
-        private const string PEPPER_ENVIRONMENT_KEY = "PEPPER";
         private const string SEPARATOR_TOKEN = "-";
         private static readonly Random _random = new ();
         
@@ -48,7 +48,7 @@ namespace Domain.Utils
         public static string EncryptPassword(string password, string salt)
         {
             password.ValidateStringArgumentNotNullOrEmpty(nameof(password));
-            string pepper = Environment.GetEnvironmentVariable(PEPPER_ENVIRONMENT_KEY) ?? string.Empty;
+            string pepper = Environment.GetEnvironmentVariable(EnvironmentVariables.Pepper) ?? string.Empty;
 
             using SHA512 sha512hash = SHA512.Create();
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password + salt + pepper);

@@ -27,6 +27,7 @@ namespace WebApi
             services
                 .AddSwagger()
                 .AddVersioning()
+                .AddServiceAuthentication()
                 .AddLogger(this.Configuration)
                 .AddCustomAutoMapper()
                 .AddSQLServer(this.Configuration)
@@ -55,7 +56,7 @@ namespace WebApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.AddAppAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
