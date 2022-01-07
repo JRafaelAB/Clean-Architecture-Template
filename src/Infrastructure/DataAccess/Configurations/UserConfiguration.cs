@@ -20,11 +20,6 @@ namespace Infrastructure.DataAccess.Configurations
             builder.Property(user => user.Name).IsRequired();
             builder.Property(user => user.Password).IsRequired();
             builder.Property(user => user.Salt).IsRequired();
-
-            builder.HasMany(user => user.Clocks)
-                .WithOne(clock => clock.User!)
-                .HasForeignKey(clock => clock.IdUser)
-                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

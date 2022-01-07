@@ -4,7 +4,7 @@ using Domain.DataAccess.Repositories;
 
 namespace Domain.DataObjects.Entities
 {
-    public abstract class DatabaseMappedEntity<TDbo>
+    public abstract class DatabaseMappedEntity<TDbo> where TDbo : class
     {
         protected readonly IMapper Mapper;
         protected readonly IBaseRepository<TDbo> Repository;

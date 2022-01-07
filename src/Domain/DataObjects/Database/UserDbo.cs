@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Constants;
 
@@ -15,7 +14,6 @@ namespace Domain.DataObjects.Database
         public string Login { get; init; }
         public string Password { get; init; }
         public string Salt { get; init; }
-        public IEnumerable<ClockDbo>? Clocks { get; init; }
 
         #region Equals_Hash_Operators
         

@@ -3,7 +3,7 @@ using Domain.DataAccess.Repositories;
 using Domain.DataAccess.UnitOfWork;
 using Infrastructure.DataAccess;
 using Infrastructure.DataAccess.Contexts;
-using Infrastructure.Repositories;
+using Infrastructure.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +16,7 @@ namespace WebApi.Modules
         {
             string connectionString = configuration.GetValue<string>(AppSettingsVariables.SqlClockConnectionString) ?? string.Empty;
 
-            services.AddDbContext<ClockContext>(
+            services.AddDbContext<CleanTemplateContext>(
                 options =>
                 {
                     options.UseSqlServer(connectionString, option => option.MigrationsAssembly("Infrastructure"));

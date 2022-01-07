@@ -4,6 +4,8 @@ using AutoMapper;
 using Domain.Constants;
 using Domain.DataAccess.Repositories;
 using Domain.DataObjects.Database;
+using Domain.Exceptions;
+using Domain.Resources;
 using Domain.Utils;
 
 namespace Domain.DataObjects.Entities.User
@@ -25,7 +27,7 @@ namespace Domain.DataObjects.Entities.User
         
         public UserEntity(IMapper mapper, IUserRepository repository, string name, string login, string password) : base(mapper, repository)
         {
-            Task.WaitAll(repository.ValidateExistingUser(login));
+            Task.WaitAll(ValidateExistingUser(login));
             
             this.Name = name;
             this.Login = login;
@@ -34,6 +36,16 @@ namespace Domain.DataObjects.Entities.User
             
             this.Salt = Cryptography.GenerateSalt(saltSize);
             this.Password = Cryptography.EncryptPassword(password, this.Salt);
+        }
+        
+        private async Task ValidateExistingUser(string login)
+        {
+            var user = await this.Repository.GetFirstByExpression(user => user.Login == login);
+
+            if (user != null)
+            {
+                throw new EntityConflictException(Messages.LoginAlreadyRegistered);
+            }
         }
 
         #region Equals_Hash_Operators
